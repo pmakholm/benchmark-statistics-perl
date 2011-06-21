@@ -1,0 +1,49 @@
+NAME
+    Benchmark::Statistics - basic statistics from benchmarking Perl code
+
+SYNOPSIS
+        us Benchmark::Statistics qw(:all)
+
+        # Get statistics object
+        my $stat = timeit($count, $code);
+
+        # ... or just print some statiostics directly
+        timethis($count, $code);
+
+DESCRIPTION
+    This module encapsulates some routines to help you banchmark and create
+    simple statistics for executing some code.
+
+    This module is not suited for micro-benchmarks where the runtime is
+    expected to be short and where the variance is expected to be
+    negligible. For this Benchmark is a better choice.
+
+Standard Exports
+  timeit(COUNT, CODE)
+    Arguments: COUNT is the number of times to run the loop, and CODE is the
+    code the run. The COUNT can be zero or negative: this means the *minimum
+    number of wallclock seconds* to run. A zero signifies the default of 3
+    seconds. The CODE should be a code reference.
+
+    Returns: a Statistics::Descriptive::Full object
+
+  timethis(COUNT, CODE)
+    Times the code as "timeit" but prints the result to STDOUT
+
+SEE ALSO
+    Statistics::Descriptive - basic descriptive statistical functions used
+
+    Benchmark - the real Benchmarking module
+
+AUTHOR
+    Peter Makholm, "<peter at makholm.net>"
+
+LICENSE AND COPYRIGHT
+    Copyright 2011 Peter Makholm.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of either: the GNU General Public License as published
+    by the Free Software Foundation; or the Artistic License.
+
+    See http://dev.perl.org/licenses/ for more information.
+
